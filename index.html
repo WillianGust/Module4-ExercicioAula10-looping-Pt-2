@@ -8,10 +8,12 @@
   </head>
   <body>
     <script>
+      nome_clientes = [];
       valor_clientes = [];
       quantidade_clientes = parseInt(
         prompt("Informe quantidade de clientes: ")
       );
+
       for (number = 0; number < quantidade_clientes; number++) {
         let cliente = prompt("Digite nome do cliente: " + (number + 1));
         var sexo = prompt(
@@ -23,11 +25,16 @@
           prompt("Digite o valor " + sexo_mostra + " " + cliente)
         );
         valor_clientes.push(valor);
+        nome_clientes.push(cliente);
         // var valor_total = valor_clientes.reduce((a, b) => {
         //   return a + b;
         // });
       }
-
+      document.write(
+        "<hr>A quantidade de pessoas sao: <b>" +
+          quantidade_clientes +
+          "<br><br>"
+      );
       //Logica para adicionar os valores dentro do array
       media = 0;
       for (i = 0; i < valor_clientes.length; i++) {
@@ -35,27 +42,36 @@
       }
       media = media / valor_clientes.length;
 
+      document.write(
+        "<hr>A media dos participarntes sao: <b>" + media + "<br><br>"
+      );
       // var media = valor_total / valor_clientes.length;
       if (media > 100) {
         document.write(
-          "Parabens a media obtida foi de " + media + " maior que 100 "
+          "<hr>Parabens a media obtida foi maior que 100 : <b>" +
+            media.toFixed(2)
         );
-      } else if ((media > 50) & (media < 100)) {
+      } else if ((media >= 50) & (media < 100)) {
         document.write(
-          "50, media considerada a melhorar o desempenho, nessa caso foi de : " +
+          "<hr>50, media considerada a melhorar o desempenho, nessa caso foi de : " +
             media
         );
-      } else if (media > 20 && media < 50) {
+      } else if (media >= 20 && media < 50) {
         document.write(
-          "Muito bem ainda dentro de uma media considerada boa, mas precisa melhora pois tem : " +
+          "<hr>Muito bem ainda dentro de uma media considerada boa, mas precisa melhora pois tem : " +
             media
         );
       } else {
         document.write(
-          " Pessoal, isso que voces querem realmente com essa media de : " +
+          " <hr>Pessoal, isso que voces querem realmente com essa media de : " +
             media
         );
       }
+      document.write(
+        "<hr> O nome dos participantes sao: <br>" +
+          nome_clientes.join("<br>") +
+          "<b>"
+      );
     </script>
   </body>
 </html>
